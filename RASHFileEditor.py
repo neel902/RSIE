@@ -10,6 +10,7 @@ from prompt_toolkit.layout.controls import BufferControl, FormattedTextControl #
 from prompt_toolkit.layout.layout import Layout # type: ignore
 from prompt_toolkit.lexers import PygmentsLexer # type: ignore
 from pygments.lexers import TextLexer # type: ignore
+from pygments.lexers.configs import IniLexer
 from pygments.lexers import get_lexer_by_name # type: ignore
 
 def create_editor_app(initial_text="", file_name="unnamed.txt"):
@@ -28,7 +29,7 @@ def create_editor_app(initial_text="", file_name="unnamed.txt"):
     try:
         usedLexer = get_lexer_by_name(text_buffer.filename.split(".")[-1] if len(text_buffer.filename.split("."))>0 else "txt").__class__ #next((val for key, val in lexers.items() if text_buffer.filename.endswith(key)), TextLexer)
     except:
-        usedLexer = TextLexer
+        usedLexer = IniLexer if ".rsei" in text_buffer.filename else TextLexer
 
     editor_window = Window(content=BufferControl(buffer=text_buffer, lexer=PygmentsLexer(usedLexer)))
 

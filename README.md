@@ -1,1 +1,2 @@
-i cba to make a readme rn ill do it later(TM)
+# RASH Sandboxing Interface extended
+RSIE is a small program that supports a filesystem in the format of RASH. It looks through the file system for boot files and boots from them, also serving as a bootloader. A default image for the RASH terminal is provided. RSIE also comes with mRASH, mini RASH, which is a small CLI to control the filesystem and RSIE without any boot file.
